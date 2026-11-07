@@ -25,13 +25,17 @@ import re
 import sys
 from pathlib import Path
 
+# Windows 控制台默认 GBK，打印中文和特殊符号会报错，统一用 UTF-8 输出
+sys.stdout.reconfigure(encoding="utf-8")
+sys.stderr.reconfigure(encoding="utf-8")
+
 sys.path.insert(0, str(Path(__file__).parent))
 from detect import REGEX_HITS  # 名字 → 级别映射（A/B/H/X）
 
 # ---------------- 指标呈现配置 ----------------
 
 # HTML 顶部指标对比表：键 → (展示名, 方向说明, 人类参考)
-# 参考值来自 270 对配对实测中位值（见 RESEARCH.md / 配对指标结果 CSV）。
+# 参考值来自 270 对配对实测中位值（见仓库根目录 RESEARCH.md / 配对指标结果 CSV）。
 METRIC_ROWS = [
     ("翻案腔", "不是A而是B 对举", "低", 0.22),
     ("提示语冒号", "结论提示冒号", "低", 0.08),

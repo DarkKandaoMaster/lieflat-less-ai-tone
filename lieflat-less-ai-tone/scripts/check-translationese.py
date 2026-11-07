@@ -12,6 +12,10 @@ import sys
 from collections import defaultdict
 from pathlib import Path
 
+# Windows 控制台默认 GBK，打印中文和特殊符号会报错，统一用 UTF-8 输出
+sys.stdout.reconfigure(encoding="utf-8")
+sys.stderr.reconfigure(encoding="utf-8")
+
 MARKERS = {
     "被动-抽象": r"被(认为|视为|称为|设计为|应用于|赋予|看作)",
     "受到…的": r"受到[^，。]{0,12}的(关注|影响|重视|挑战)",

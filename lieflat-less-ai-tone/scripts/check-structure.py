@@ -12,6 +12,10 @@ import re
 import sys
 from pathlib import Path
 
+# Windows 控制台默认 GBK，打印中文和特殊符号会报错，统一用 UTF-8 输出
+sys.stdout.reconfigure(encoding="utf-8")
+sys.stderr.reconfigure(encoding="utf-8")
+
 # 段首评论语：省掉回指成分时读者要翻回上一段
 COMMENT = re.compile(
     r"^(?:听起来|看起来|看上去|听上去|说白了|说到底|换句话说|意味着|值得注意|"

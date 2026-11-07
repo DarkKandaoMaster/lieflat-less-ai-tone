@@ -12,6 +12,10 @@ import sys
 import collections
 from pathlib import Path
 
+# Windows 控制台默认 GBK，打印中文和特殊符号会报错，统一用 UTF-8 输出
+sys.stdout.reconfigure(encoding="utf-8")
+sys.stderr.reconfigure(encoding="utf-8")
+
 # 每条对应 SKILL.md 的一条规则，正则尽量贴规则的触发标记
 RULES = {
     "2 翻案腔": r"(?:不是|并非|不在于)[^，。！？\n]{1,20}[，]?(?:而是|而在于)",

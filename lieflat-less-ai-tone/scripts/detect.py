@@ -15,7 +15,7 @@
     C 只报告    结构/节奏类分布特征，默认不改
     F 指纹      分模型特征（破折号/分号/引号），解读必须带方向
 
-人类参考值来自两轮实测（见 RESEARCH.md）：
+人类参考值来自两轮实测（见仓库根目录 RESEARCH.md）：
 - 第一轮 629 篇对照（5 模型各 60 篇 vs 329 篇人类，不配对）
 - 第二轮 270 对同题同事实配对 + 43 万次语义判断
 标 [可调] 的阈值是经验值，换语料后应重新标定。
@@ -25,6 +25,10 @@ import json
 import re
 import sys
 from pathlib import Path
+
+# Windows 控制台默认 GBK，打印中文和特殊符号会报错，统一用 UTF-8 输出
+sys.stdout.reconfigure(encoding="utf-8")
+sys.stderr.reconfigure(encoding="utf-8")
 
 EXTS = {".md", ".txt"}
 
